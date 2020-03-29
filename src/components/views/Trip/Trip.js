@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import HTMLParser from 'react-html-parser';
-
+import OrderForm from '../../features/OrderForm/OrderForm';
 import NotFound from '../NotFound/NotFound';
 import Section from '../../layout/Section/Section';
 import PageTitle from '../../common/PageTitle/PageTitle';
@@ -39,6 +39,7 @@ const Trip = ({error, name, image, cost, days, description, country, intro}) => 
           </Row>
         </Grid>
       </DetailsBox>
+      <OrderForm/>
       <Grid>
         <Row>
           <Col xs={12}>
