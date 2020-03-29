@@ -1,8 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import PropTypes from 'prop-types';
-//import {AnimatedSwitch} from 'react-router-transition';
+import {AnimatedSwitch} from 'react-router-transition';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import Home from './components/views/Home/Home';
 import Trips from './components/views/Trips/TripsContainer';
@@ -10,6 +10,7 @@ import Trip from './components/views/Trip/TripContainer';
 import Country from './components/views/Country/CountryContainer';
 import Countries from './components/views/Countries/CountriesContainer';
 import Regions from './components/views/Regions/RegionsContainer';
+import styles from './styles/App.scss';
 // DONE - import other views
 import Info from './components/views/Info/Info';
 import NotFound from './components/views/NotFound/NotFound';
@@ -40,7 +41,17 @@ class App extends React.Component {
     return (
       <BrowserRouter>
         <MainLayout>
-          <Switch>
+          <AnimatedSwitch //Loading side from bottom
+            atEnter={{translateY: 200, opacity: 0}}
+            atLeave={{translateY: 200, opacity: 0}}
+            atActive={{translateY: 0, opacity: 1}}
+            className={styles.switchWrapper}
+            location={location}
+            mapStyles={styles => ({
+              transform: `translateY(${styles.translateY}%)`,
+              opacity: styles.opacity,
+            })}
+          >
             <Route exact path='/' component={Home} />
             <Route exact path='/trips' component={Trips} />
             <Route exact path='/trip/:id' component={Trip} />
@@ -50,7 +61,7 @@ class App extends React.Component {
             <Route exact path='/regions' component={Regions} />
             <Route exact path='/info' component={Info} />
             <Route path='*' component={NotFound} />
-          </Switch>
+          </AnimatedSwitch>
         </MainLayout>
       </BrowserRouter>
     );
