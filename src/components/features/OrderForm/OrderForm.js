@@ -1,25 +1,26 @@
 import OrderSummary from '../OrderSummary/OrderSummary';
 import React from 'react';
 //import styles from './OrderForm';
-import {Grid, Row, Col} from 'react-flexbox-grid';
+import {Row, Col} from 'react-flexbox-grid';
 import PropTypes from 'prop-types';
 import PageTitle from '../../common/PageTitle/PageTitle';
 
-const OrderForm = (cost) => (
+const OrderForm = props => (
 
 
-  <Grid>
-    <Row>
-      <Col xs={12}>
-        <PageTitle text='Trip options' />
-        <OrderSummary tripCost={cost} />
-      </Col>
-    </Row>
-  </Grid>
+  
+  <Row>
+    <Col xs={12}>
+      <PageTitle text='Trip options' />
+      <OrderSummary cost={props.tripCost} options={props.options} />
+    </Col>
+  </Row>
+
 );
 
 OrderForm.propTypes = {
-  cost: PropTypes.number,
+  tripCost: PropTypes.node,
+  options: PropTypes.object,
 };
 
 export default OrderForm;
