@@ -6,8 +6,8 @@ const mapStateToProps = state => ({
   options: getOrderOptions(state),
 });
 
-const mapDispatchToProps= props => ({
-  setOrderOption: setOrderOption(props),
+const mapDispatchToProps = dispatch => ({
+  setOrderOption: option => dispatch(setOrderOption(option)),
 });
 
 

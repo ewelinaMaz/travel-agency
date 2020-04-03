@@ -23,7 +23,11 @@ export const getFilteredTrips = ({trips, filters}) => {
     output = output.filter(trip => pattern.test(trip.tags));
   }
   // TODO - sort by cost descending (most expensive goes first)
-  
+  output.sort(function (a, b) {
+    let low = a.cost.replace('$', '');
+    let height = b.cost.replace('$', '');
+    return parseInt(low) < parseInt(height) ? 1: -1;
+  });
   return output;
 };
 
