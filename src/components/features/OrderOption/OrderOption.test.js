@@ -1,6 +1,7 @@
 import React from 'react';
 import {shallow} from 'enzyme';
 import OrderOption from './OrderOption';
+import DatePicker from 'react-datepicker';
 
 describe ('Component OrderOption', () => {
   it ('should render correct props', () => {
@@ -154,10 +155,25 @@ for(let type in optionTypes){
           renderedSubcomponent.find('input').at(1).simulate('change', {currentTarget: {checked: true}});
           expect(mockSetOrderOption).toBeCalledTimes(1);
           expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: [mockProps.currentValue, testValue]});
-
         });
-      }  
-
+        it('contains input with type checkbox', () => {
+          const inputCheckbox = renderedSubcomponent.find('input');
+          expect(inputCheckbox.length).toBe(mockProps.values.length);
+        });
+      }
+        break;  
+      case 'date': {
+        /*tests for Datepicker*/
+        it('should run setOrderOption function on change', () => {
+          renderedSubcomponent.find(DatePicker).simulate('change', testValue);
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue});
+        });
+        it('should contain datePicker', () => {
+          expect(renderedSubcomponent.find(DatePicker).length).toBe(1);
+        });
+      }
+        break;
     }
   });
 }
