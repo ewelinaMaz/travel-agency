@@ -21,5 +21,4 @@ describe('Component Hero', () => {
     expect(component.hasClass('small')).toBe(true);
     expect(component.hasClass('dummy')).toBe(true);
   });
-  
 });

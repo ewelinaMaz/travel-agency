@@ -88,6 +88,20 @@
       "tripId": "5cc1d10107e2be6064ff9129",
       "tripCountry": "ARE",
       "id": 4
+    },
+    {
+      "car-rental": "",
+      "accommodation": "hotel",
+      "features": [],
+      "adults": 1,
+      "children": 0,
+      "name": "utfi",
+      "contact": "ygy",
+      "start-date": "",
+      "totalCost": "$139,399",
+      "tripId": "5cc1d1014c75f672e46ef6d7",
+      "tripCountry": "TLS",
+      "id": 5
     }
   ]
 }
