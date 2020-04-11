@@ -65,6 +65,12 @@ describe('Component HappyHourAd with mocked Date', () => {
   checkDescriptionAtTime('13:00:00', 23 * 60 * 60 + '');
 });
 
+describe('Component HappyHourAd with promoDescription', () => {
+  checkDescriptionAtTime('12:00:00', mockProps.promoDescription);
+  checkDescriptionAtTime('12:59:59', mockProps.promoDescription);
+  checkDescriptionAtTime('12:30:00', mockProps.promoDescription);
+});
+
 const checkDescriptionAFterTime = (time, delaySeconds, expectedDescription) => {
   it(`should show correct value ${delaySeconds} seconds after ${time}`, () => {
     jest.useFakeTimers();
@@ -89,3 +95,9 @@ describe('Component HappyHourAd with mocked Date and delay', () => {
   checkDescriptionAFterTime('11:59:58', 1, '1');
   checkDescriptionAFterTime('13:00:00', 60 * 60, 22 * 60 * 60 + '');
 });
+
+describe('Component HappyHourAd display correct promoDescription when side is loaded befor 12:00', () => {
+  checkDescriptionAFterTime('11:57:58', 124, mockProps.promoDescription);
+  checkDescriptionAFterTime('11:59:58', 3, mockProps.promoDescription);
+});
+
