@@ -10,11 +10,13 @@ import DetailsBox from '../../common/DetailsBox/DetailsBox';
 import DetailsImage from '../../common/DetailsImage/DetailsImage';
 import List from '../../common/List/List';
 import ListItem from '../../common/ListItem/ListItem';
-
+import {promoPrice} from '../../../utils/promoPrice';
+import {formatPrice} from '../../../utils/formatPrice';
 import styles from './Trip.scss';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 
 const Trip = ({error, name, image, cost, days, description, country, intro, id}) => {
+  const timeUTC = new Date(new Date().toUTCString().substr(0, 25));
   if(error) return <NotFound />;
   else return (
     <Section>
@@ -33,7 +35,8 @@ const Trip = ({error, name, image, cost, days, description, country, intro, id})
               </div>
               <List variant='light'>
                 <ListItem title={`<strong>Duration:</strong> ${days} days`} icon='calendar-alt' />
-                <ListItem title={`<strong>Price:</strong> from ${cost}`} icon='money-bill-wave' />
+                <ListItem title={timeUTC.getHours() == 12 ? (`<strong>Happy hours! </strong>Price from ${formatPrice(promoPrice(cost, 20))} <br>
+                <small>Regular price from ${cost}</small>`) : (`<strong>Price from</strong>${cost}`)} icon='money-bill-wave' />
               </List>
             </Col>
           </Row>

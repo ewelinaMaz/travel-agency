@@ -34,11 +34,11 @@ class HappyHourAd extends React.Component {
     return(
       <div className={styles.component}>
         <h3 className={styles.title}>{title}</h3>
-        <div className={styles.promoDescription}>{getTime > 82800 ? promoDescription : formatTime(getTime)}
+        <div className={styles.promoDescription}>
+          {getTime > 82800 ? promoDescription : formatTime(getTime)}
         </div>
       </div>
-    );
-    
+    ); 
   }
 }
 export default HappyHourAd;

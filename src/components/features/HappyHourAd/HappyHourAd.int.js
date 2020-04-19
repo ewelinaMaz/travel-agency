@@ -17,8 +17,7 @@ const mockDate = customDate => class extends Date {
   constructor(...args){
     if(args.length){
       super(...args);
-    }
-    else {
+    } else {
       super(customDate);
     }
     return this;
